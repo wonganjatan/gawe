@@ -1,13 +1,16 @@
 import { Request, Response } from 'express';
-
-import { db } from '../prisma/db';
+import { IUserService } from './IUserService';
 
 export class UserController {
-    async findAllUsers(req: Request, res: Response) {
+    private readonly userService: IUserService
+
+    constructor(userService: IUserService) {
+        this.userService = userService
+    }
+
+    async findAll(req: Request, res: Response) {
         try {
-            const users = await db.orm.public.User
-            .select("id", "email", "name")
-            .all()
+            const users = await this.userService.findAll()
         
             return res.json(users);
         } catch (error) {
