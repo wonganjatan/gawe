@@ -9,7 +9,7 @@ const userRepository = new UserRepository()
 const userService = new UserService(userRepository)
 const userController = new UserController(userService);
 
-router.get("/api/users", async (req, res) => {
+router.get("/users", async (req, res) => {
     await userController.findAll(req, res);
 });
 
