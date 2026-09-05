@@ -1,7 +1,19 @@
+export type Role = "ADMIN" | "USER"
+
 export interface User {
     id: number
+    firstName: string
+    lastName: string
+    username: string
     email: string
-    name: string | null
+    role: Role
+    createdAt: Date
 }
 
-export type CreateUserInput = Omit<User, 'id'>
+export interface CreateUserInput {
+    firstName: string
+    lastName: string
+    username: string
+    email: string
+    password: string
+}
