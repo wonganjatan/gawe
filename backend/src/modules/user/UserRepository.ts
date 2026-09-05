@@ -1,16 +1,34 @@
-import { CreateUserInput, User } from "../../types/User";
+import { prisma } from "../../lib/prisma";
+import { CreateUserDatabaseInput, UserResponse } from "../../types/User";
 import { IUserRepository } from "./IUserRepository";
-import { db } from '../../prisma/db';
 
 export class UserRepository implements IUserRepository {
-    async findAll(): Promise<User[]> {
-        return db.orm.public.User
-            .select("id", "email", "name")
-            .all()
+    async findAll(): Promise<UserResponse[]> {
+        return prisma.user.findMany({ 
+            select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                username: true,
+                email: true,
+                role: true,
+                createdAt: true
+            } 
+        })
     }
 
-    async create(newUser: CreateUserInput): Promise<User> {
-        return db.orm.public.User
-            .create(newUser)
+    async create(newUser: CreateUserDatabaseInput): Promise<UserResponse> {
+        return prisma.user.create({ 
+            data: newUser,
+            select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                username: true,
+                email: true,
+                role: true,
+                createdAt: true
+            } 
+        })
     }
 }
