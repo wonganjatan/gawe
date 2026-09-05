@@ -1,12 +1,15 @@
-import type { User } from "../types/User";
+import type { CreateUserInput, User } from "../types/User";
 import axios from "./axios";
 
-export const usersApi = {
-
-  getAllUsers: async (): Promise<User[]> => {
-    const response = await axios.get<User[]>("/users");
-    return response.data;
+export const authApi = {
+  register: async (input: CreateUserInput): Promise<void> => {
+    await axios.post<void>("/auth/register", input);
   },
+
+  login: async (email: string, password: string): Promise<User> => {
+    const res = await axios.post<User>("/auth/login", { email, password })
+    return res.data
+  }
 
 //   getUserById: async (userId: number) => {
 //     const response = await axios.get(`/users/${userId}`);
