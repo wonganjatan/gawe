@@ -1,4 +1,4 @@
-import { User } from "../../types/User";
+import { CreateUserInput, User } from "../../types/User";
 import { IUserRepository } from "./IUserRepository";
 import { IUserService } from "./IUserService";
 
@@ -11,5 +11,9 @@ export class UserService implements IUserService {
 
     findAll(): Promise<User[]> {
         return this.userRepository.findAll()
+    }
+
+    create(newUser: CreateUserInput): Promise<User> {
+        return this.userRepository.create(newUser)
     }
 }
