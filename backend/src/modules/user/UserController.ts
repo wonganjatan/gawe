@@ -21,4 +21,19 @@ export class UserController {
             })
         }
     }
+
+    async create(req: Request, res: Response) {
+        const { newUser } = req.body
+
+        try {
+            const created = await this.userService.create(newUser)
+            return res.status(201).json(created)
+        } catch (error) {
+            console.error(error)
+
+            return res.status(500).json({
+                message: "Failed to create a user"
+            })
+        }
+    }
 }
