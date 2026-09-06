@@ -4,7 +4,7 @@ import type { SignInForm } from "../../types/Auth"
 import { Link, useNavigate } from "react-router-dom"
 
 export default function SignIn() {
-    const { login } = useAuthContext()
+    const { signIn } = useAuthContext()
     const navigate = useNavigate()
 
     const {
@@ -16,7 +16,7 @@ export default function SignIn() {
 
     const onSubmit = async (data: SignInForm) => {
         try {
-            await login(data.email, data.password)
+            await signIn(data.email, data.password)
             navigate("/")
         } catch (error) {
             setError("root", { message: "Sign in failed. Please try again" })

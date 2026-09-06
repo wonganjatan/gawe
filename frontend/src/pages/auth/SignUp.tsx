@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import type { SignUpForm } from "../../types/Auth"
 
 export default function SignUp() {
-    const { signup } = useAuthContext()
+    const { signUp } = useAuthContext()
     const navigate = useNavigate()
 
     const {
@@ -18,7 +18,7 @@ export default function SignUp() {
     const onSubmit = async (data: SignUpForm) => {
         try {
             const { confirmPassword, ...input } = data
-            await signup(input)
+            await signUp(input)
             navigate("/login")  
         } catch (error) {
             setError("root", { message: "Sign up failed. Please try again" })
