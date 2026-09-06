@@ -21,4 +21,21 @@ export class AuthService implements IAuthService {
             hashedPassword
         })
     }
+
+    async login(email: string, password: string): Promise<UserResponse> {
+        const user = await this.userRepository.findByEmail(email)
+
+        if (!user) {
+            throw new Error("Invalid credentials")
+        }
+
+        const isPasswordMatch = await bcrypt.compare(password, user.hashedPassword)
+
+        if (!isPasswordMatch) {
+            throw new Error("Invalid credentials")
+        }
+
+        const { hashedPassword, ...safeUser } = user
+        return safeUser
+    }
 }
