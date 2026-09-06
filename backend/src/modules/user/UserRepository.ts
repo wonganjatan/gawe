@@ -1,10 +1,11 @@
 import { prisma } from "../../lib/prisma";
-import { CreateUserDatabaseInput, UserResponse } from "../../types/User";
+import { CreateUserDatabaseInput, CreateUserInput, User, UserResponse } from "../../types/User";
 import { IUserRepository } from "./IUserRepository";
 
 export class UserRepository implements IUserRepository {
-    async findAll(): Promise<UserResponse[]> {
-        return prisma.user.findMany({ 
+     async register(newUser: CreateUserDatabaseInput): Promise<void> {
+        await prisma.user.create({ 
+            data: newUser,
             select: {
                 id: true,
                 firstName: true,
@@ -17,9 +18,8 @@ export class UserRepository implements IUserRepository {
         })
     }
 
-    async create(newUser: CreateUserDatabaseInput): Promise<UserResponse> {
-        return prisma.user.create({ 
-            data: newUser,
+    async findAll(): Promise<UserResponse[]> {
+        return prisma.user.findMany({ 
             select: {
                 id: true,
                 firstName: true,
