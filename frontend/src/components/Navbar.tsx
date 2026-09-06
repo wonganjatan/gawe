@@ -18,7 +18,7 @@ export default function Navbar() {
                     <Link to="/login" className="flex flex-col text-white border-2 border-transparent hover:border-b-yellow-500 transition-colors duration-300">
                         Login
                     </Link>
-                    <Link to="/signup" className="text-white border-2 border-transparent hover:border-b-green-500 transition-colors duration-300">
+                    <Link to="/register" className="text-white border-2 border-transparent hover:border-b-green-500 transition-colors duration-300">
                         Sign Up
                     </Link>
                 </div>
