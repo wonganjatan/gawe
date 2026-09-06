@@ -23,4 +23,19 @@ export class AuthController {
             })
         }
     }
+
+    async login(req: Request, res: Response) {
+        const { email, password } = req.body
+
+        try {
+            const loggedIn = await this.authService.login(email, password)
+            return res.status(201).json(loggedIn)
+        } catch (error) {
+            console.error(error)
+
+            return res.status(500).json({
+                message: "Failed to login"
+            })
+        }
+    }
 }
