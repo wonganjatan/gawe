@@ -1,10 +1,10 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import userRoutes from "./routes/user.routes"
-import { UserRepository } from "./modules/user/UserRepository";
 import bcrypt from 'bcrypt'
 import { prisma } from "./lib/prisma";
+import userRoutes from "./routes/users.routes"
+import authRoutes from "./routes/auth.routes"
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -16,6 +16,7 @@ app.use(express.json())
 app.use(cors());
 
 app.use("/api", userRoutes)
+app.use("/api", authRoutes)
 
 async function initAdmin() {
     const isExists = await prisma.user.findFirst({ 
