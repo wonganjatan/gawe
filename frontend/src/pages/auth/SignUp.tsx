@@ -1,12 +1,7 @@
-import type React from "react"
 import { Link, useNavigate } from "react-router-dom"
-import type { CreateUserInput } from "../../types/User"
 import { useAuthContext } from "../../context/AuthContext"
 import { useForm } from "react-hook-form"
-
-interface SignUpForm extends CreateUserInput {
-    confirmPassword: string
-}
+import type { SignUpForm } from "../../types/Auth"
 
 export default function SignUp() {
     const { signup } = useAuthContext()
@@ -26,7 +21,7 @@ export default function SignUp() {
             await signup(input)
             navigate("/login")  
         } catch (error) {
-            setError("root", { message: "Sign up failed. Please Try again" })
+            setError("root", { message: "Sign up failed. Please try again" })
         }
     }
     
