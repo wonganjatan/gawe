@@ -1,4 +1,5 @@
-import type { CreateUserInput, User } from "../types/User";
+import type { AuthResponse } from "../types/Auth";
+import type { CreateUserInput } from "../types/User";
 import axios from "./axios";
 
 export const authApi = {
@@ -6,8 +7,8 @@ export const authApi = {
     await axios.post<void>("/auth/register", input);
   },
 
-  login: async (email: string, password: string): Promise<User> => {
-    const res = await axios.post<User>("/auth/login", { email, password })
+  login: async (email: string, password: string): Promise<AuthResponse> => {
+    const res = await axios.post<AuthResponse>("/auth/login", { email, password })
     return res.data
   }
 };
