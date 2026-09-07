@@ -1,7 +1,9 @@
-import { CreateUserInput, UserResponse } from "../../types/User";
+import { CreateUserInput } from "../../types/User";
 import bcrypt from "bcrypt"
 import { IAuthService } from "./IAuthService";
 import { IUserRepository } from "../user/IUserRepository";
+import jwt from 'jsonwebtoken'
+import { AuthResponse } from "../../types/Auth";
 
 export class AuthService implements IAuthService {
     private readonly userRepository: IUserRepository
@@ -22,7 +24,7 @@ export class AuthService implements IAuthService {
         })
     }
 
-    async login(email: string, password: string): Promise<UserResponse> {
+    async login(email: string, password: string): Promise<AuthResponse> {
         const user = await this.userRepository.findByEmail(email)
 
         if (!user) {
@@ -35,7 +37,13 @@ export class AuthService implements IAuthService {
             throw new Error("Invalid credentials")
         }
 
+        const token = jwt.sign(
+            { id: user.id, role: user.role },
+            process.env.JWT_SECRET!,
+            { expiresIn: '2h' }
+        )
+
         const { hashedPassword, ...safeUser } = user
-        return safeUser
+        return { token, user: safeUser }
     }
 }
