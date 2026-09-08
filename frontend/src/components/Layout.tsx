@@ -1,13 +1,11 @@
 import type React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Sidebar from "./Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="h-screen flex flex-col justify-between">
-            <Navbar/>
-            <main>{children}</main>
-            <Footer/>
+        <div className="flex h-screen bg-gray-50">
+            <Sidebar/>
+            <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
     )
 }
