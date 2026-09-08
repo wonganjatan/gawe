@@ -12,8 +12,8 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={loggedInUser ? <Layout><Home/></Layout> : <Navigate to="/login" replace/>}/>
-      <Route path="/register" element={loggedInUser ? <Navigate to="/" replace/> : <Layout><SignUp/></Layout>}/>
-      <Route path="/login" element={loggedInUser ? <Navigate to="/" replace/> : <Layout><SignIn/></Layout>}/>
+      <Route path="/register" element={loggedInUser ? <Navigate to="/" replace/> : <SignUp/>}/>
+      <Route path="/login" element={loggedInUser ? <Navigate to="/" replace/> : <SignIn/>}/>
       <Route path="/users" element={loggedInUser ? <Layout><Users/></Layout> : <Navigate to="/login" replace/>}/>
     </Routes>
   )
