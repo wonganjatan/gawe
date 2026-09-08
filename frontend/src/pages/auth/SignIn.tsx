@@ -33,10 +33,10 @@ export default function SignIn() {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <div className="flex flex-col">
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1">Email:</label>
                         <input 
                             id="email"
-                            className="border border-black rounded-sm p-1"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
                             type="email" 
                             placeholder="Email" 
                             {...register("email", {
@@ -50,10 +50,10 @@ export default function SignIn() {
                         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                     </div>
                     <div  className="flex flex-col">
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">Password:</label>
                         <input 
                             id="password"
-                            className="border border-black rounded-sm p-1"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
                             type="password" 
                             placeholder="Password" 
                             {...register("password", {
