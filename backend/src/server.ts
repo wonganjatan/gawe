@@ -36,7 +36,7 @@ async function initAdmin() {
             username: "admin",
             email: ADMIN_EMAIL,
             hashedPassword,
-            role: "ADMIN"
+            role: "Admin"
         }
     });
 }
