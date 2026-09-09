@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useAuthContext } from "../context/AuthContext"
 
 export default function Home() {
