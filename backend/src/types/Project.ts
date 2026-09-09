@@ -1,0 +1,15 @@
+import type { Task } from "./Task"
+
+export interface Project {
+    id: number
+    name: string
+    description?: string
+    status: "Planning" | "In Progress" | "Completed"
+    ownerId: number
+    memberIds?: number[]
+    startDate?: string
+    dueDate?: string
+    completedAt?: string
+    tasks?: Task[]
+    createdAt: string
+}
