@@ -34,32 +34,30 @@ export default function ProjectCreate() {
     return (
         <main className="flex flex-col min-h-screen w-full bg-gray-50">
             <div className="flex flex-col items-center justify-center py-12 px-4">
-                <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+                <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg">
                     <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Create Project</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-                        <div className="flex gap-3">
-                            <div className="flex flex-col flex-1">
-                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mb-1">Project Name:<span className="text-red-500">*</span></label>
-                                <input 
-                                    type="text" 
-                                    id="name"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-                                    {...register("name", { 
-                                        required: "Project name is required",
-                                    })}
-                                />
-                                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
-                            </div>
-                            <div className="flex flex-col flex-1">
-                                <label htmlFor="description" className="text-sm font-medium text-gray-700 mb-1">Description:</label>
-                                <input 
-                                    type="text" 
-                                    id="description"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-                                    {...register("description")}
-                                />
-                                {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description.message}</p>}
-                            </div>
+                        <div className="flex flex-col flex-1">
+                            <label htmlFor="name" className="text-sm font-medium text-gray-700 mb-1">Name:<span className="text-red-500">*</span></label>
+                            <input 
+                                type="text" 
+                                id="name"
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                                {...register("name", { 
+                                    required: "Project name is required",
+                                })}
+                            />
+                            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+                        </div>
+                        <div className="flex flex-col flex-1">
+                            <label htmlFor="description" className="text-sm font-medium text-gray-700 mb-1">Description:</label>
+                            <input 
+                                type="text" 
+                                id="description"
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                                {...register("description")}
+                            />
+                            {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description.message}</p>}
                         </div>
                         
                         <div className="flex gap-3">
@@ -93,8 +91,8 @@ export default function ProjectCreate() {
                                 />
                                 {errors.dueDate && <p className="text-red-500 text-xs mt-1">{errors.dueDate.message}</p>}
                             </div>
-                            {errors.root && <p className="text-red-500 text-sm text-center">{errors.root.message}</p>}
                         </div>
+                        {errors.root && <p className="text-red-500 text-sm text-center">{errors.root.message}</p>}
 
                         <button 
                             type='submit'
