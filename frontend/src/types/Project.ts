@@ -14,14 +14,13 @@ export interface Project {
     createdAt: string
 }
 
-export interface ProjectForm {
+export interface ProjectCreateForm {
     name: string
     description?: string
-    status: "Planning" | "In Progress" | "Completed"
     ownerId: number
     memberIds?: number[]
     startDate: string
     dueDate: string
-    completedAt: string | null
+    completedAt?: string
     tasks?: Task[]
 }
