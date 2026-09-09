@@ -7,9 +7,17 @@ export interface Project {
     status: "Planning" | "In Progress" | "Completed"
     ownerId: number
     memberIds?: number[]
-    startDate?: string
-    dueDate?: string
+    startDate: string
+    dueDate: string
     completedAt?: string
     tasks?: Task[]
     createdAt: string
+}
+
+export interface ProjectCreateForm {
+    name: string
+    description?: string
+    ownerId: number
+    startDate: string
+    dueDate: string
 }
