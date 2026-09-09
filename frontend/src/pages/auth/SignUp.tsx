@@ -50,7 +50,7 @@ export default function SignUp() {
                                 {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
                             </div>
                             <div className="flex flex-col flex-1">
-                                <label htmlFor="lastName" className="text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <label htmlFor="lastName" className="text-sm font-medium text-gray-700 mb-1">Last Name:</label>
                                 <input 
                                     type="text" 
                                     id="lastName"

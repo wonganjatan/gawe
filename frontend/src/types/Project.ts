@@ -18,9 +18,7 @@ export interface ProjectCreateForm {
     name: string
     description?: string
     ownerId: number
-    memberIds?: number[]
     startDate: string
     dueDate: string
     completedAt?: string
-    tasks?: Task[]
 }
