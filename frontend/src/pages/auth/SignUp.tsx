@@ -17,8 +17,7 @@ export default function SignUp() {
 
     const onSubmit = async (data: SignUpForm) => {
         try {
-            const { confirmPassword, ...input } = data
-            await signUp(input)
+            await signUp(data)
             navigate("/login")  
         } catch (error) {
             setError("root", { message: "Sign up failed. Please try again" })
