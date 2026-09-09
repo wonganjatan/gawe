@@ -20,5 +20,4 @@ export interface ProjectCreateForm {
     ownerId: number
     startDate: string
     dueDate: string
-    completedAt?: string
 }
