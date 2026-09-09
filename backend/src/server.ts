@@ -3,8 +3,9 @@ import express from "express";
 import cors from "cors";
 import bcrypt from 'bcrypt'
 import { prisma } from "./lib/prisma";
-import userRoutes from "./routes/users.routes"
 import authRoutes from "./routes/auth.routes"
+import userRoutes from "./routes/users.routes"
+import projectRoutes from "./routes/projects.routes"
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,8 +16,9 @@ const ADMIN_PASSWORD = process.env.INITIAL_ADMIN_PASSWORD || "abc123"
 app.use(express.json())
 app.use(cors());
 
-app.use("/api", userRoutes)
 app.use("/api", authRoutes)
+app.use("/api", userRoutes)
+app.use("/api", projectRoutes)
 
 async function initAdmin() {
     const isExists = await prisma.user.findFirst({ 
