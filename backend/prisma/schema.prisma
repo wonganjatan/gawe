@@ -7,18 +7,69 @@ datasource db {
   provider = "postgresql"
 }
 
-model user {
-  id             Int      @id @default(autoincrement())
-  firstName      String
-  lastName       String
-  username       String   @unique
-  email          String   @unique
-  hashedPassword String
-  role           Role     @default(USER)
-  createdAt      DateTime @default(now()) @db.Timestamptz(6)
+model User {
+  id               Int       @id @default(autoincrement())
+  firstName        String
+  lastName         String
+  username         String    @unique
+  email            String    @unique
+  hashedPassword   String
+  role             Role      @default(User)
+  createdAt        DateTime  @default(now())
+  ownedProjects    Project[]
+  assignedTasks    Task[]
+  memberofProjects Project[] @relation("ProjectMembers")
+}
+
+model Project {
+  id          Int           @id @default(autoincrement())
+  name        String
+  description String?
+  status      ProjectStatus @default(Planning)
+  ownerId     Int
+  startDate   DateTime
+  dueDate     DateTime
+  completedAt DateTime?
+  createdAt   DateTime      @default(now())
+  owner       User          @relation(fields: [ownerId], references: [id])
+  tasks       Task[]
+  members     User[]        @relation("ProjectMembers")
+}
+
+model Task {
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String?
+  status      TaskStatus    @default(Todo)
+  priority    TaskPriority?
+  projectId   Int
+  assignedId  Int?
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime      @default(now())
+  assignee    User?         @relation(fields: [assignedId], references: [id])
+  project     Project       @relation(fields: [projectId], references: [id])
 }
 
 enum Role {
-  USER
-  ADMIN
+  User
+  Admin
+}
+
+enum ProjectStatus {
+  Planning
+  InProgress
+  Completed
+}
+
+enum TaskStatus {
+  Todo
+  InProgress
+  Done
+}
+
+enum TaskPriority {
+  Low
+  Medium
+  High
 }
