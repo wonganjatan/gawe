@@ -1,5 +1,3 @@
-export type Role = "ADMIN" | "USER"
-
 export interface User {
     id: number
     firstName: string
@@ -7,7 +5,7 @@ export interface User {
     username: string
     email: string
     hashedPassword: string
-    role: Role
+    role: "Admin" | "User"
     createdAt: Date
 }
 
@@ -17,7 +15,7 @@ export interface UserResponse {
     lastName: string
     username: string
     email: string
-    role: Role
+    role: "Admin" | "User"
     createdAt: Date
 }
 
@@ -35,5 +33,5 @@ export interface CreateUserDatabaseInput {
     username: string
     email: string
     hashedPassword: string
-    role?: Role
+    role?: "Admin" | "User"
 }
