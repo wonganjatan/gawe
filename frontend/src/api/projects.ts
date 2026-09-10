@@ -2,10 +2,10 @@ import type { Project, ProjectCreateForm } from "../types/Project";
 import axios from "./axios";
 
 export const projectsApi = {
-  // getAll: async (): Promise<Project[]> => {
-  //   const response = await axios.get<Project[]>("/projects");
-  //   return response.data;
-  // },
+  getAll: async (): Promise<Project[]> => {
+    const response = await axios.get<Project[]>("/projects");
+    return response.data;
+  },
 
   // getById: async (id: number) => {
   //   const response = await axios.get(`/projects/${id}`);
