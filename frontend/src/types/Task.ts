@@ -11,6 +11,19 @@ export interface Task {
     createdAt: string
 }
 
+export interface TaskResponse {
+    id: number
+    title: string
+    description?: string | null
+    status: "Todo" | "InProgress" | "Done"
+    priority?: "Low" | "Medium" | "High" | null
+    projectId: number
+    assignedId?: number | null
+    dueDate?: Date  | null
+    completedAt?: Date | null
+    createdAt: Date
+}
+
 export interface TaskForm {
     title: string
     description?: string
