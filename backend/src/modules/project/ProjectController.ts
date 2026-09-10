@@ -8,6 +8,16 @@ export class ProjectController {
         this.projectService = projectService
     }
 
+    async findAll(req: Request, res: Response) {
+        try {
+            const projects = await this.projectService.findAll()
+            return res.json(projects)
+        } catch (error) {
+            console.error(error)
+            return res.status(500).json({ message: "Failed to fetch Projects" })
+        }
+    }
+
     async create(req: Request, res: Response) {
         try {
             const created = await this.projectService.create(req.body)
