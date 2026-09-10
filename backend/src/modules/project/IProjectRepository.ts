@@ -1,5 +1,6 @@
-import { ProjectCreateForm } from "../../types/Project";
+import { ProjectCreateForm, ProjectResponse } from "../../types/Project";
 
 export interface IProjectRepository {
-    create(form: ProjectCreateForm): Promise<void>
+    findAll(): Promise<ProjectResponse[]>
+    create(newProject: ProjectCreateForm): Promise<void>
 }
