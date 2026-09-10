@@ -9,6 +9,10 @@ const projectRepository = new ProjectRepository();
 const projectService = new ProjectService(projectRepository)
 const projectController = new ProjectController(projectService)
 
+router.get("/projects", async (req, res) => {
+    await projectController.findAll(req, res)
+})
+
 router.post("/projects/new", async (req, res) => {
     await projectController.create(req, res)
 })
