@@ -9,7 +9,11 @@ import Projects from "./pages/project/Projects";
 import ProjectCreate from "./pages/project/ProjectCreate";
 
 export default function App() {
-  const { loggedInUser } = useAuthContext()
+  const { loggedInUser, loading } = useAuthContext()
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
   
   return (
     <Routes>
