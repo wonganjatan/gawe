@@ -1,4 +1,4 @@
-import { ProjectCreateForm } from "../../types/Project";
+import { ProjectCreateForm, ProjectResponse } from "../../types/Project";
 import { IProjectRepository } from "./IProjectRepository";
 import { IProjectService } from "./IProjectService";
 
@@ -9,7 +9,11 @@ export class ProjectService implements IProjectService {
         this.projectRepository = projectRepository
     }
 
+    async findAll(): Promise<ProjectResponse[]> {
+        return this.projectRepository.findAll()
+    }
+
     async create(form: ProjectCreateForm): Promise<void> {
-        return await this.projectRepository.create(form)
+        return this.projectRepository.create(form)
     }
 }
