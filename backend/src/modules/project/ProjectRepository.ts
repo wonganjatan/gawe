@@ -21,6 +21,25 @@ export class ProjectRepository implements IProjectRepository {
         })
     }
 
+    async findById(id: number): Promise<ProjectResponse | null> {
+        return await prisma.project.findFirst({
+            where: { id },
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                status: true,
+                ownerId: true,
+                members: true,
+                startDate: true,
+                dueDate: true,
+                completedAt: true,
+                tasks: true,
+                createdAt: true
+            }
+        })
+    }
+
     async create(newProject: ProjectCreateForm): Promise<void> {
         await prisma.project.create({
             data: newProject,
