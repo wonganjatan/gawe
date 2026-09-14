@@ -7,10 +7,10 @@ export const projectsApi = {
     return response.data;
   },
 
-  // getById: async (id: number) => {
-  //   const response = await axios.get(`/projects/${id}`);
-  //   return response.data;
-  // },
+  getById: async (id: number) => {
+    const response = await axios.get(`/projects/${id}`);
+    return response.data;
+  },
 
   create: async (form: ProjectCreateForm) => {
     const response = await axios.post("/projects/new", form);
