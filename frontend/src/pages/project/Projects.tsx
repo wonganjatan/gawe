@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Project } from "../../types/Project";
 import { projectsApi } from "../../api/projects";
+import ProjectCard from "../../components/ProjectCard";
 
 export default function Projects() {
     const [projects, setProjects] = useState<Project[]>()
@@ -43,9 +44,7 @@ export default function Projects() {
             </div>
             <div className="p-4">
                 {projects?.map(project => (
-                    <div key={project.id}>
-                        <p>{project.name}</p>
-                    </div>
+                    <ProjectCard key={project.id} project={project}/>
                 ))}
             </div>
         </div>
