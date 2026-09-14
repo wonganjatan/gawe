@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { IProjectService } from './IProjectService';
+import { Project } from '../../types/Project';
 
 export class ProjectController {
     private readonly projectService: IProjectService 
@@ -15,6 +16,17 @@ export class ProjectController {
         } catch (error) {
             console.error(error)
             return res.status(500).json({ message: "Failed to fetch Projects" })
+        }
+    }
+
+    async findById(req: Request, res: Response) {
+        const { id } = req.params
+        try {
+            const project = await this.projectService.findById(Number(id))
+            return res.json(project)
+        } catch (error) {
+            console.error(error)
+            return res.status(500).json({ message: "Failed to fetch project by id"})
         }
     }
 
