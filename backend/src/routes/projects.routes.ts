@@ -17,4 +17,9 @@ router.post("/projects/new", async (req, res) => {
     await projectController.create(req, res)
 })
 
+router.get(`/projects/:id`, async (req, res) => {
+    await projectController.findById(req, res)
+
+})
+
 export default router
