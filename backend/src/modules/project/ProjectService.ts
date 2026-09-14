@@ -13,6 +13,10 @@ export class ProjectService implements IProjectService {
         return this.projectRepository.findAll()
     }
 
+    async findById(id: number): Promise<ProjectResponse | null> {
+        return this.projectRepository.findById(id)
+    }
+
     async create(form: ProjectCreateForm): Promise<void> {
         return this.projectRepository.create(form)
     }
