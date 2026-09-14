@@ -5,6 +5,7 @@ import { projectsApi } from "../../api/projects";
 
 export default function Projects() {
     const [projects, setProjects] = useState<Project[]>()
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const findAll = async () => {
@@ -14,6 +15,8 @@ export default function Projects() {
                 setProjects(projects)
             } catch (error) {
                 console.error(error)
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -22,12 +25,29 @@ export default function Projects() {
     
     return (
         <div>
-            <Link to="/projects/new">New Project</Link>
-            {projects?.map(project => (
-                <div key={project.id}>
-                    <p>{project.name}</p>
-                </div>
-            ))}
+            <h1 className="font-bold text-2xl p-4 shadow-md">Projects</h1>
+            <div className="flex items-center justify-between p-4">
+                <form
+
+                >
+                    <div className="flex items-center justify-center gap-2">
+                        <label htmlFor="name">Search: </label>
+                        <input 
+                            type="text" 
+                            className="border rounded-md"/>
+                    </div>
+                </form>
+                <Link 
+                    to="/projects/new" 
+                    className="text-white border border-green-500 bg-green-500 rounded-lg px-2 hover:border-green-600 hover:bg-green-600 transition-colors duration-300">New Project</Link>
+            </div>
+            <div className="p-4">
+                {projects?.map(project => (
+                    <div key={project.id}>
+                        <p>{project.name}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
