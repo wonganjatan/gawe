@@ -1,9 +1,8 @@
-import type { AuthResponse } from "../types/Auth";
-import type { CreateUserInput } from "../types/User";
+import type { AuthResponse, SignUpForm } from "../types/Auth";
 import axios from "./axios";
 
 export const authApi = {
-  register: async (input: CreateUserInput): Promise<void> => {
+  register: async (input: SignUpForm): Promise<void> => {
     await axios.post<void>("/auth/register", input);
   },
 
