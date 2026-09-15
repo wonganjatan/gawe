@@ -3,9 +3,10 @@ import type { Project } from "../../types/Project";
 import type { Task } from "../../types/Task";
 import { useEffect, useState } from "react";
 import { projectsApi } from "../../api/projects";
+import TaskCard from "../../components/TaskCard";
 
 const projectStatus: Record<Project["status"], { style: string; label: string }> = {
-    Planning: { style: "bg-slate-400", label: "Planning"},
+    Planning: { style: "bg-slate-400 text-white", label: "Planning"},
     InProgress: { style: "bg-blue-500 text-white", label: "In Progress" },
     Completed: { style: "bg-emerald-500 text-white", label: "Completed" }
 }
@@ -71,17 +72,7 @@ export default function ProjectDetails() {
                         {(project.tasks?.filter(task => task.status === status).length ?? 0) > 0 ? (
                             <div className="flex flex-col gap-2">
                                 {project.tasks?.filter(task => task.status === status).map(task => (
-                                    <div className="bg-white border border-slate-200 rounded-md p-3 flex flex-col gap-2">
-                                        <div className="flex items-start gap-2">
-                                            <span className={`h-2 w-2 rounded-full mt-1.5 shrink-0 ${value.style}`}></span>
-                                            <p className="text-sm text-slate-700 leading-snug">
-                                                {task.title}
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center gap-1 text-xs text-slate-400 pl-4">
-                                            {task.dueDate && new Date(task.dueDate).toLocaleDateString()}
-                                        </div>
-                                    </div>
+                                    <TaskCard key={task.id} task={task} />
                                 ))}
                             </div>
                         ) : (
