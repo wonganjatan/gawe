@@ -21,6 +21,7 @@ const backlog: Record<Task["status"], { style: string; label: string }> ={
 export default function ProjectDetails() {
     const { id } = useParams()
     const [project, setProject] = useState<Project | null>(null)
+    const [loading, setLoading] = useState<boolean>(true)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -30,10 +31,16 @@ export default function ProjectDetails() {
                 setProject(data)
             } catch (error) {
                 console.error(error)
+            } finally {
+                setLoading(false)
             }
         }
         fetchProjectById(Number(id))
     }, [])
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
 
     if (!project) {
         return <p>Project not found</p>

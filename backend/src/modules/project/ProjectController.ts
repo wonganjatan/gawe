@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { IProjectService } from './IProjectService';
-import { Project } from '../../types/Project';
 
 export class ProjectController {
     private readonly projectService: IProjectService 
