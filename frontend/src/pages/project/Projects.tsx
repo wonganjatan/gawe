@@ -12,7 +12,6 @@ export default function Projects() {
         const findAll = async () => {
             try {
                 const projects = await projectsApi.getAll()
-                console.log(projects)
                 setProjects(projects)
             } catch (error) {
                 console.error(error)
