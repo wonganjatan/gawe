@@ -20,4 +20,8 @@ export class ProjectService implements IProjectService {
     async create(form: ProjectCreateForm): Promise<void> {
         return this.projectRepository.create(form)
     }
+
+    async delete(id: number): Promise<void> {
+        return this.projectRepository.delete(id)
+    }
 }
