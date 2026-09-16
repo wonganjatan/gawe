@@ -66,8 +66,9 @@ export default function ProjectDetails() {
                     <p className="text-sm text-slate-500 max-w-xl">
                         {project.description}
                     </p>
-                    <div className="flex items-center gap-1 text-xs text-slate-400 mt-1">
-                        {new Date(project.dueDate).toLocaleDateString()}
+                    <div className="flex flex-col gap-1 text-xs text-slate-400 mt-1">
+                        <span>Created At: {new Date(project.createdAt).toLocaleString()}</span>
+                        <span>Due Date: {new Date(project.dueDate).toLocaleString()}</span>
                     </div>
                 </div>
                 <div className="flex items-center gap-3 pr-8">
