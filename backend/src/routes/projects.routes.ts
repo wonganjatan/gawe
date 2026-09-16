@@ -21,6 +21,10 @@ router.get(`/projects/:id`, async (req, res) => {
     await projectController.findById(req, res)
 })
 
+router.put(`/projects/:id`, async (req, res) => {
+    await projectController.update(req, res)
+})
+
 router.delete(`/projects/:id`, async (req, res) => {
     await projectController.delete(req, res)
 })
