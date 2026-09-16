@@ -4,4 +4,5 @@ export interface IProjectRepository {
     findAll(): Promise<ProjectResponse[]>
     findById(id: number): Promise<ProjectResponse | null>
     create(newProject: ProjectCreateForm): Promise<void>
+    delete(id: number): Promise<void>
 }
