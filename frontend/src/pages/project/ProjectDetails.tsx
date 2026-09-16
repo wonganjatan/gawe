@@ -31,7 +31,7 @@ export default function ProjectDetails() {
             }
         }
         fetchProjectById(Number(id))
-    })
+    }, [])
 
     if (!project) {
         return <p>Project not found</p>
