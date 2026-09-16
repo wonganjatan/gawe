@@ -39,8 +39,14 @@ export default function ProjectUpdate() {
 
     const onSubmit = async (data: ProjectUpdateForm) => {
         try {
-            
-            navigate("/projects")
+            const payload = {
+                ...data,
+                startDate: new Date(data.startDate).toISOString(),
+                dueDate: new Date(data.dueDate).toISOString()
+            }
+
+            await projectsApi.update(Number(id), payload)
+            navigate(`/projects/${id}`)
         } catch (error) {
             console.error(error)
             setError("root", { message: "Failed to update project. Please try again" })
