@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import type { Project } from "../../types/Project";
 import type { Task } from "../../types/Task";
 import { useEffect, useState } from "react";
 import { projectsApi } from "../../api/projects";
 import TaskCard from "../../components/TaskCard";
-import { Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 
 const projectStatus: Record<Project["status"], { style: string; label: string }> = {
     Planning: { style: "bg-slate-400 text-white", label: "Planning"},
@@ -74,6 +74,10 @@ export default function ProjectDetails() {
                     <span className="bg-emerald-500 text-white text-sm font-medium rounded-md px-3 py-1.5">
                             Completed
                     </span>
+                    <Link to={`/projects/${project.id}/edit`}
+                        className="text-slate-500 hover:text-slate-700 p-1.5 border border-slate-200 rounded-md hover:border-slate-300 cursor-pointer">
+                        <Pencil className="h-4 w-4"/>
+                    </Link>
                     <button 
                         type="submit" onClick={handleDelete}
                         className="text-red-500 hover:text-red-600 p-1.5 border border-slate-200 rounded-md hover:border-red-200 cursor-pointer">
