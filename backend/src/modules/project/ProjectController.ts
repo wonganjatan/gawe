@@ -42,6 +42,19 @@ export class ProjectController {
         }
     }
 
+    async update(req: Request, res: Response) {
+        const { id } = req.params
+        try {
+            const updated = await this.projectService.update(Number(id), req.body)
+            return res.json(updated)
+        } catch (error) {
+            console.error(error)    
+            return res.status(500).json({
+                message: "Failed to update project"
+            })
+        }
+    }
+
     async delete(req: Request, res: Response) {
         try {
             const { id } = req.params
