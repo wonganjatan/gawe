@@ -71,8 +71,8 @@ export default function ProjectDetails() {
                     </div>
                 </div>
                 <div className="flex items-center gap-3 pr-8">
-                    <span className="bg-emerald-500 text-white text-sm font-medium rounded-md px-3 py-1.5">
-                            Completed
+                    <span className={`font-medium rounded-md px-3 py-1.5 ${projectStatus[project.status].style}`}>
+                        {project.status}
                     </span>
                     <Link to={`/projects/${project.id}/edit`}
                         className="text-slate-500 hover:text-slate-700 p-1.5 border border-slate-200 rounded-md hover:border-slate-300 cursor-pointer">
