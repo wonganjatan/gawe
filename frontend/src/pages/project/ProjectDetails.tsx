@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import type { Project } from "../../types/Project";
 import type { Task } from "../../types/Task";
 import { useEffect, useState } from "react";
 import { projectsApi } from "../../api/projects";
 import TaskCard from "../../components/TaskCard";
+import { Trash2 } from "lucide-react";
 
 const projectStatus: Record<Project["status"], { style: string; label: string }> = {
     Planning: { style: "bg-slate-400 text-white", label: "Planning"},
@@ -20,6 +21,7 @@ const backlog: Record<Task["status"], { style: string; label: string }> ={
 export default function ProjectDetails() {
     const { id } = useParams()
     const [project, setProject] = useState<Project | null>(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchProjectById = async (id: number) => {
@@ -37,6 +39,15 @@ export default function ProjectDetails() {
         return <p>Project not found</p>
     }
 
+    const handleDelete = async () => {
+        try {
+            await projectsApi.delete(project.id)
+            navigate("/projects")
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <div className="bg-slate-50 min-h-screen">
             <div className="flex bg-white border-b border-slate-200">
@@ -52,8 +63,15 @@ export default function ProjectDetails() {
                         {new Date(project.dueDate).toLocaleDateString()}
                     </div>
                 </div>
-                <div className="flex items-center justify-center p-6">
-                    <h1 className={`text-2xl border rounded-lg p-2 ${projectStatus[project.status].style}`}>{project.status}</h1>
+                <div className="flex items-center gap-3 pr-8">
+                    <span className="bg-emerald-500 text-white text-sm font-medium rounded-md px-3 py-1.5">
+                            Completed
+                    </span>
+                    <button 
+                        type="submit" onClick={handleDelete}
+                        className="text-red-500 hover:text-red-600 p-1.5 border border-slate-200 rounded-md hover:border-red-200 cursor-pointer">
+                        <Trash2 className="h-4 w-4" />
+                    </button>
                 </div>
             </div>
 
