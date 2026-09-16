@@ -22,6 +22,10 @@ export default function Projects() {
 
         findAll()
     }, [])
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
     
     return (
         <div>
