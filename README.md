@@ -18,12 +18,15 @@ N-tier layered architecture style
 ## Docker
 https://www.docker.com/products/docker-desktop/
 
+```
+docker compose up -d
+```
+
 ## Backend
 ```
 cd backend
 npm install
 # create .env with  DATABASE_URL, INITIAL_ADMIN_EMAIL, INITIAL_ADMIN_PASSWORD
-docker compose up -d
 npx prisma migrate dev
 npm run dev
 ```
