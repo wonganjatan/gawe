@@ -22,8 +22,8 @@ export const projectsApi = {
 //     return response.data;
 //   },
 
-//   deleteUser: async (userId: number) => {
-//     const response = await axios.delete(`/users/${userId}`);
-//     return response.data;
-//   },
+  delete: async (id: number) => {
+    const response = await axios.delete(`/projects/${id}`);
+    return response.data;
+  },
 };
