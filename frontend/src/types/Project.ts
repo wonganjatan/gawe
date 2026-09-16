@@ -36,3 +36,11 @@ export interface ProjectCreateForm {
     startDate: string
     dueDate: string
 }
+
+export interface ProjectUpdateForm {
+    name: string
+    description?: string
+    status: string
+    startDate: string
+    dueDate: string
+}
