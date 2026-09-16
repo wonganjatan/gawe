@@ -1,4 +1,4 @@
-import type { Project, ProjectCreateForm } from "../types/Project";
+import type { Project, ProjectCreateForm, ProjectUpdateForm } from "../types/Project";
 import axios from "./axios";
 
 export const projectsApi = {
@@ -17,10 +17,10 @@ export const projectsApi = {
     return response.data;
   },
 
-//   updateUser: async (userId: number, user: Partial<User>) => {
-//     const response = await axios.put(`/users/${userId}`, user);
-//     return response.data;
-//   },
+  update: async (id: number, data: ProjectUpdateForm) => {
+    const response = await axios.put(`/projects/${id}`, data);
+    return response.data;
+  },
 
   delete: async (id: number) => {
     const response = await axios.delete(`/projects/${id}`);

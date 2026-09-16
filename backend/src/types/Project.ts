@@ -1,5 +1,5 @@
-import { User } from "../../generated/prisma/browser"
 import type { Task, TaskResponse } from "./Task"
+import { User } from "./User"
 
 export interface Project {
     id: number
@@ -33,6 +33,14 @@ export interface ProjectCreateForm {
     name: string
     description?: string
     ownerId: number
+    startDate: string
+    dueDate: string
+}
+
+export interface ProjectUpdateForm {
+    name: string
+    description?: string
+    status: "Planning" | "InProgress" | "Completed"
     startDate: string
     dueDate: string
 }
