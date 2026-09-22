@@ -89,7 +89,7 @@ export default function ProjectDetails() {
 
             <div className="flex gap-4 p-6 overflow-x-auto">
                 {Object.entries(backlog).map(([status, value]) => (
-                    <div key={status} className="flex-1 min-w-60 flex flex-col gap-3">
+                    <div key={status} className="flex-1 min-w-80 flex flex-col gap-3">
                         <div className="flex items-center gap-2 px-1">
                             <h3 className="text-sm font-semibold text-slate-600">
                                 {value.label}

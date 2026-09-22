@@ -28,7 +28,7 @@ export default function TaskCard({ task }: Props) {
     }
     return(
         <div className="bg-white border border-slate-200 rounded-md p-3 flex flex-col gap-2">
-            <div className="flex">
+            <div className="flex items-center justify-between">
                 <div className="flex flex-col items-start gap-2">
                     <p className="text-sm text-slate-700 leading-snug">
                         {task.title}
@@ -37,11 +37,14 @@ export default function TaskCard({ task }: Props) {
                         Due Date: {task.dueDate && new Date(task.dueDate).toLocaleDateString()}
                     </p>
                 </div>
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex items-start gap-1">
                     <p className={`border rounded-md p-1 text-white ${task.priority ? taskPriority[task.priority].style : ""}`}>
                         {task.priority}
                     </p>
-                    <select value={status} onChange={handleChange}>
+                    <select 
+                        value={status} 
+                        onChange={handleChange}
+                        className="border rounded-md px-1">
                         <option value="Todo">To do</option>
                         <option value="InProgress">In Progress</option>
                         <option value="Done">Done</option>
