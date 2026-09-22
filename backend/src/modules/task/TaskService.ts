@@ -14,6 +14,10 @@ export class TaskService implements ITaskService {
         return this.taskRepository.findAll()
     }
 
+    async findById(id: number): Promise<TaskResponse> {
+        return this.taskRepository.findById(id)
+    }
+
     async updateStatus(id: number, newStatus: Task["status"]): Promise<void> {
         await this.taskRepository.updateStatus(id, newStatus)
     }
