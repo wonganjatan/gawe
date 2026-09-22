@@ -9,17 +9,12 @@ const taskRepository = new TaskRepository()
 const taskService = new TaskService(taskRepository)
 const taskController = new TaskController(taskService)
 
-router.put("/tasks/:id", async (req, res) => {
-    try {
-        const id = Number(req.params.id)
-        const { status } = req.body
+router.get("/tasks", async (req, res) => {
+    return taskController.findAll(req, res)
+})
 
-        await taskController.updateStatus(id, status)
-        res.sendStatus(200)
-    } catch (error) {
-        console.error(error)
-        res.sendStatus(500)
-    }
+router.put("/tasks/:id", async (req, res) => {
+    return taskController.updateStatus(req, res)
 })
 
 export default router

@@ -1,9 +1,9 @@
-import type { Task } from "../types/Task"
+import type { Task, TaskResponse } from "../types/Task"
 import axios from "./axios"
 
 export const tasksApi = {
-    getAll: async (): Promise<Task[]> => {
-        const response = await axios.get<Task[]>("/tasks");
+    getAll: async (): Promise<TaskResponse[]> => {
+        const response = await axios.get<TaskResponse[]>("/tasks");
         return response.data;
     },
 
