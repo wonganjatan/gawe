@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import type { Task, TaskResponse } from "../types/Task"
 import { tasksApi } from "../api/tasks"
+import { Link } from "react-router-dom"
 
 interface Props {
     task: TaskResponse
@@ -30,9 +31,9 @@ export default function TaskCard({ task }: Props) {
         <div className="bg-white border border-slate-200 rounded-md p-3 flex flex-col gap-2">
             <div className="flex items-center justify-between">
                 <div className="flex flex-col items-start gap-2">
-                    <p className="text-sm text-slate-700 leading-snug">
+                    <Link to={`/tasks/${task.id}`} className="text-sm text-slate-700 leading-snug">
                         {task.title}
-                    </p>
+                    </Link>
                     <p className="text-xs text-slate-400">
                         Due Date: {task.dueDate && new Date(task.dueDate).toLocaleDateString()}
                     </p>
