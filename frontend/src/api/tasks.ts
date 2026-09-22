@@ -7,6 +7,11 @@ export const tasksApi = {
         return response.data;
     },
 
+    getById: async (id: number): Promise<TaskResponse> => {
+        const res = await axios.get<TaskResponse>(`/tasks/${id}`)
+        return res.data
+    },
+
     updateStatus: async (id: number, status: Task["status"]): Promise<void> => {
         await axios.put(`/tasks/${id}`, { status })
     }
