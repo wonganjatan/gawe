@@ -20,6 +20,24 @@ export class TaskRepository implements ITaskRepository {
         })
     }
 
+    async findById(id: number): Promise<TaskResponse> {
+        return await prisma.task.findFirstOrThrow({
+            where: { id },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                status: true,
+                priority: true,
+                projectId: true,
+                assignedId: true,
+                dueDate: true,
+                completedAt: true,
+                createdAt: true
+            }
+        })
+    }
+
     async updateStatus(id: number, newStatus: Task["status"]): Promise<void> {
         await prisma.task.update({
             where: { id },
