@@ -19,6 +19,20 @@ export class TaskController {
         } 
     }
 
+    async findById(req: Request, res: Response) {
+        const id = Number(req.params.id)
+
+        try {
+            const task = await this.taskService.findById(id)
+            return res.json(task)
+        } catch (error) {
+            console.error(error)
+            return res.status(404).json({
+                message: "Task not found"
+            })
+        }
+    }
+
     async updateStatus(req: Request, res: Response): Promise<void> {
         const id = Number(req.params.id)
         const { status } = req.body
