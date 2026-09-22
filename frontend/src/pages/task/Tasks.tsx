@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import type { Task } from "../../types/Task"
+import type { TaskResponse } from "../../types/Task"
 import { tasksApi } from "../../api/tasks"
 import { Link } from "react-router-dom"
 import TaskCard from "../../components/TaskCard"
 
 export default function Tasks() {
-    const [tasks, setTasks] = useState<Task[]>()
+    const [tasks, setTasks] = useState<TaskResponse[]>()
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {

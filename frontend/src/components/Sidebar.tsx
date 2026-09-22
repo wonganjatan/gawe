@@ -21,6 +21,12 @@ export default function Sidebar() {
                     >
                         Projects
                     </Link>
+                    <Link
+                        to="/tasks"
+                        className="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 bg-indigo-700 text-white"
+                    >
+                        Tasks
+                    </Link>
                 </nav>
             </div>
             
