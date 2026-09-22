@@ -1,18 +1,18 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import type { Project } from "../../types/Project";
-import type { Task } from "../../types/Task";
+import type { ProjectResponse } from "../../types/Project";
 import { useEffect, useState } from "react";
 import { projectsApi } from "../../api/projects";
 import TaskCard from "../../components/TaskCard";
 import { Pencil, Trash2 } from "lucide-react";
+import type { TaskResponse } from "../../types/Task";
 
-const projectStatus: Record<Project["status"], { style: string; label: string }> = {
+const projectStatus: Record<ProjectResponse["status"], { style: string; label: string }> = {
     Planning: { style: "bg-slate-400 text-white", label: "Planning"},
     InProgress: { style: "bg-blue-500 text-white", label: "In Progress" },
     Completed: { style: "bg-emerald-500 text-white", label: "Completed" }
 }
 
-const backlog: Record<Task["status"], { style: string; label: string }> ={
+const backlog: Record<TaskResponse["status"], { style: string; label: string }> ={
     Todo: { style: "bg-slate-400", label: "To do"},
     InProgress: { style: "bg-blue-500 text-white", label: "In Progress"},
     Done: { style: "bg-emerald-500 text-white", label: "Done"}
@@ -20,7 +20,7 @@ const backlog: Record<Task["status"], { style: string; label: string }> ={
 
 export default function ProjectDetails() {
     const { id } = useParams()
-    const [project, setProject] = useState<Project | null>(null)
+    const [project, setProject] = useState<ProjectResponse | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const navigate = useNavigate()
 

@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import type { Task } from "../types/Task"
+import type { Task, TaskResponse } from "../types/Task"
 import { tasksApi } from "../api/tasks"
 
 interface Props {
-    task: Task
+    task: TaskResponse
 }
 
 const taskPriority: Record<NonNullable<Task["priority"]>, { style: string }> = {
@@ -13,7 +13,7 @@ const taskPriority: Record<NonNullable<Task["priority"]>, { style: string }> = {
 }
 
 export default function TaskCard({ task }: Props) {
-    const [status, setStatus] = useState<Task["status"]>(task.status)
+    const [status, setStatus] = useState<TaskResponse["status"]>(task.status)
 
     const handleChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newStatus = e.target.value as Task["status"]
