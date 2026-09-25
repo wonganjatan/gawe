@@ -1,5 +1,5 @@
 import { Task } from "../../../generated/prisma/browser";
-import { TaskResponse } from "../../types/Task";
+import { TaskCreateForm, TaskResponse } from "../../types/Task";
 import { ITaskRepository } from "./ITaskRepository";
 import { ITaskService } from "./ITaskService";
 
@@ -16,6 +16,10 @@ export class TaskService implements ITaskService {
 
     async findById(id: number): Promise<TaskResponse> {
         return this.taskRepository.findById(id)
+    }
+
+    async create(newTask: TaskCreateForm) {
+        await this.create(newTask)
     }
 
     async updateStatus(id: number, newStatus: Task["status"]): Promise<void> {
