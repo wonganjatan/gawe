@@ -86,7 +86,11 @@ export default function ProjectDetails() {
                     </button>
                 </div>
             </div>
-
+            <Link 
+                to="/tasks/new" 
+                className="flex items-center justify-center text-white border border-green-500 bg-green-500 rounded-lg px-2 hover:border-green-600 hover:bg-green-600 transition-colors duration-300">
+                New Task
+            </Link>
             <div className="flex gap-4 p-6 overflow-x-auto">
                 {Object.entries(backlog).map(([status, value]) => (
                     <div key={status} className="flex-1 min-w-80 flex flex-col gap-3">

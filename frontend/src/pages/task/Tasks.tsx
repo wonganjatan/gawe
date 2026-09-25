@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import type { TaskResponse } from "../../types/Task"
 import { tasksApi } from "../../api/tasks"
-import { Link } from "react-router-dom"
 import TaskCard from "../../components/TaskCard"
 
 export default function Tasks() {
@@ -41,9 +40,6 @@ export default function Tasks() {
                             className="border rounded-md"/>
                     </div>
                 </form>
-                <Link 
-                    to="/tasks/new" 
-                    className="text-white border border-green-500 bg-green-500 rounded-lg px-2 hover:border-green-600 hover:bg-green-600 transition-colors duration-300">New Task</Link>
             </div>
             <div className="p-4">
                 {tasks?.map(task => (
