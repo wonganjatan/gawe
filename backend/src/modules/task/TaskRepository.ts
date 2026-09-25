@@ -1,5 +1,5 @@
 import { prisma } from "../../lib/prisma";
-import { Task, TaskResponse } from "../../types/Task";
+import { Task, TaskCreateForm, TaskResponse } from "../../types/Task";
 import { ITaskRepository } from "./ITaskRepository";
 
 export class TaskRepository implements ITaskRepository {
@@ -33,6 +33,22 @@ export class TaskRepository implements ITaskRepository {
                 assignedId: true,
                 dueDate: true,
                 completedAt: true,
+                createdAt: true
+            }
+        })
+    }
+
+    async create(newTask: TaskCreateForm): Promise<void> {
+        prisma.task.create({
+            data: newTask,
+            select: {
+                title: true,
+                description: true,
+                status: true,
+                priority: true,
+                projectId: true,
+                assignedId: true,
+                dueDate: true,
                 createdAt: true
             }
         })
