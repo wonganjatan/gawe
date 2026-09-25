@@ -33,6 +33,20 @@ export class TaskController {
         }
     }
 
+    async create(req: Request, res: Response) {
+        const { newTask } = req.body
+
+        try {
+            const created = await this.taskService.create(newTask)
+            return res.json(created)
+        } catch (error) {
+            console.error(error)
+            return res.status(500).json({
+                message: "Failed to create task"
+            })
+        }
+    }
+
     async updateStatus(req: Request, res: Response): Promise<void> {
         const id = Number(req.params.id)
         const { status } = req.body
