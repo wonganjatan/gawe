@@ -16,6 +16,11 @@ router.get("/tasks", async (req, res) => {
 router.get("/tasks/:id", async (req, res) => {
     return taskController.findById(req, res)
 })
+
+router.get("/tasks/new", async (req, res) => {
+    return taskController.create(req, res)
+})
+
 router.put("/tasks/:id", async (req, res) => {
     return taskController.updateStatus(req, res)
 })

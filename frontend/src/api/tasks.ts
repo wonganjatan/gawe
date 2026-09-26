@@ -1,4 +1,4 @@
-import type { Task, TaskResponse } from "../types/Task"
+import type { Task, TaskCreateForm, TaskResponse } from "../types/Task"
 import axios from "./axios"
 
 export const tasksApi = {
@@ -10,6 +10,10 @@ export const tasksApi = {
     getById: async (id: number): Promise<TaskResponse> => {
         const res = await axios.get<TaskResponse>(`/tasks/${id}`)
         return res.data
+    },
+
+    create: async (newTask: TaskCreateForm): Promise<void> => {
+        await axios.post<void>("/tasks/new", newTask)
     },
 
     updateStatus: async (id: number, status: Task["status"]): Promise<void> => {
