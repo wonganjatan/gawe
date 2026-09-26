@@ -34,3 +34,14 @@ export interface TaskForm {
     dueDate?: string
     completedAt?: string
 }
+
+export interface TaskCreateForm {
+    title: string
+    description?: string
+    status: "Todo" | "InProgress" | "Done"
+    priority?: "Low" | "Medium" | "High"
+    projectId: number
+    assignedId?: number
+    dueDate?: string
+    createdAt: string
+}
