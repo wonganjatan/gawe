@@ -22,7 +22,6 @@ const priorityStyle = {
   High: "bg-red-100 text-red-600",
 };
 
-
 export default function TaskDetails() {
     const { id } = useParams()
     const [task, setTask] = useState<TaskResponse | null>(null)
@@ -123,22 +122,22 @@ export default function TaskDetails() {
             {/* bottom action bar */}
             <div className="border-t border-slate-200 bg-white py-4 flex items-center justify-center gap-3">
                 <Link
-                to="/tasks"
-                className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 px-3 py-2 rounded-md border border-slate-200 hover:border-slate-300"
+                    to="/tasks"
+                    className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 px-3 py-2 rounded-md border border-slate-200 hover:border-slate-300"
                 >
                 <ArrowLeft className="h-4 w-4" />
-                Back
+                    Back
                 </Link>
                 <Link
-                to={`/tasks/${task.id}/edit`}
-                className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 px-3 py-2 rounded-md border border-slate-200 hover:border-slate-300"
+                    to={`/tasks/${task.id}/edit`}
+                    className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 px-3 py-2 rounded-md border border-slate-200 hover:border-slate-300"
                 >
                 <Pencil className="h-4 w-4" />
-                Edit
+                    Edit
                 </Link>
                 <button className="flex items-center gap-1.5 text-sm text-red-500 hover:text-red-600 px-3 py-2 rounded-md border border-slate-200 hover:border-red-200">
                 <Trash2 className="h-4 w-4" />
-                Delete
+                    Delete
                 </button>
             </div>
         </div>
