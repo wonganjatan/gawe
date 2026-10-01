@@ -43,7 +43,9 @@ export default function Projects() {
                 </form>
                 <Link 
                     to="/projects/new" 
-                    className="text-white border border-green-500 bg-green-500 rounded-lg px-2 hover:border-green-600 hover:bg-green-600 transition-colors duration-300">New Project</Link>
+                    className="text-white border border-green-500 bg-green-500 rounded-lg px-2 hover:border-green-600 hover:bg-green-600 transition-colors duration-300">
+                    New Project
+                </Link>
             </div>
             <div className="p-4">
                 {projects?.map(project => (
