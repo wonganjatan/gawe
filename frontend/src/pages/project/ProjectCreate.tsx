@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useAuthContext } from "../../context/AuthContext"
 import { useForm } from "react-hook-form"
 import type { ProjectCreateForm } from "../../types/Project"
-import axios from "../../api/axios"
+import { projectsApi } from "../../api/projects"
 
 export default function ProjectCreate() {
     const { loggedInUser } = useAuthContext()
@@ -20,12 +20,12 @@ export default function ProjectCreate() {
         try {
             const payload = {
                 ...data,
-                ownerId: loggedInUser?.id,
+                ownerId: Number(loggedInUser?.id),
                 startDate: new Date(data.startDate).toISOString(),
                 dueDate: new Date(data.dueDate).toISOString()
             }
 
-            await axios.post("/projects/new", payload)
+            await projectsApi.create(payload)
             navigate("/")
         } catch (error) {
             setError("root", { message: "Failed to create project. Please try again" })
