@@ -3,6 +3,7 @@ import { useAuthContext } from "../../context/AuthContext"
 import type { TaskCreateForm } from "../../types/Task"
 import { useForm } from "react-hook-form"
 import axios from "axios"
+import { tasksApi } from "../../api/tasks"
 
 export default function TaskCreate() {
     const { loggedInUser } = useAuthContext()
@@ -22,10 +23,10 @@ export default function TaskCreate() {
                 ownerId: loggedInUser?.id
             }
 
-            await axios.post("/projects/new", payload)
+            await tasksApi.create(payload)
             navigate("/")
         } catch (error) {
-            setError("root", { message: "Failed to create project. Please try again" })
+            setError("root", { message: "Failed to create task. Please try again" })
         }
     }
     return (
