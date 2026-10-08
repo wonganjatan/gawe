@@ -7,10 +7,10 @@ export const usersApi = {
     return response.data;
   },
 
-//   getUserById: async (userId: number) => {
-//     const response = await axios.get(`/users/${userId}`);
-//     return response.data;
-//   },
+  getUserById: async (id: number) => {
+    const response = await axios.get(`/users/${id}`);
+    return response.data;
+  },
 
 //   createUser: async (user: Partial<User>) => {
 //     const response = await axios.post("/users", user);
