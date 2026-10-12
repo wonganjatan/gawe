@@ -47,4 +47,19 @@ export class UserRepository implements IUserRepository {
             } 
         })
     }
+
+    async findById(id: number): Promise<UserResponse | null> {
+        return prisma.user.findFirstOrThrow({
+            where: { id },
+            select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                username: true,
+                email: true,
+                role: true,
+                createdAt: true
+            } 
+        })
+    }
 }
