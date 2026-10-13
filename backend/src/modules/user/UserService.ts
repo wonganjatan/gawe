@@ -12,4 +12,8 @@ export class UserService implements IUserService {
     async findAll(): Promise<UserResponse[]> {
         return await this.userRepository.findAll()
     }
+
+    async findById(id: number): Promise<UserResponse | null> {
+        return await this.userRepository.findById(id)
+    }
 }
