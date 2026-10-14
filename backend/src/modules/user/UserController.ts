@@ -21,4 +21,19 @@ export class UserController {
             })
         }
     }
+
+    async findById(req: Request, res: Response) {
+        const { id } = req.params
+        try {
+            const user = await this.userService.findById(Number(id))
+
+            return res.json(user)
+        } catch (error) {
+            console.error(error)
+
+            return res.status(500).json({
+                message: `Failed to get user id ${id}`
+            })
+        }
+    }
 }
