@@ -13,4 +13,8 @@ router.get("/users", async (req, res) => {
     await userController.findAll(req, res);
 });
 
+router.get("/users/:id", async (req, res) => {
+    await userController.findById(req, res)
+})
+
 export default router;
