@@ -31,12 +31,12 @@ export default function Sidebar() {
             </div>
             
             <div className="p-4 border-t border-indigo-500">
-                <div className="mb-3">
+                <Link className="mb-3" to={`/users/${loggedInUser?.id}`}>
                     <p className="text-white text-sm font-medium">
                         {loggedInUser?.firstName} {loggedInUser?.lastName}
                     </p>
                     <p className="text-indigo-200 text-xs">{loggedInUser?.email}</p>
-                </div>
+                </Link>
                 <button
                     onClick={signOut}
                     className="text-white text-sm border-2 border-transparent hover:border-b-red-400 transition-colors duration-300 cursor-pointer"

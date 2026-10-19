@@ -12,6 +12,7 @@ import ProjectUpdate from "./pages/project/ProjectUpdate";
 import Tasks from "./pages/task/Tasks";
 import TaskDetails from "./pages/task/TaskDetails";
 import TaskCreate from "./pages/task/TaskCreate";
+import UserDetails from "./pages/user/UserDetails";
 
 export default function App() {
   const { loggedInUser, loading } = useAuthContext()
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/register" element={loggedInUser ? <Navigate to="/" replace/> : <SignUp/>}/>
       <Route path="/login" element={loggedInUser ? <Navigate to="/" replace/> : <SignIn/>}/>
       <Route path="/users" element={loggedInUser ? <Layout><Users/></Layout> : <Navigate to="/login" replace/>}/>
+      <Route path="/users/:id" element={loggedInUser ? <Layout><UserDetails/></Layout> : <Navigate to="/login" replace/>}/>
       <Route path="/projects" element={loggedInUser ? <Layout><Projects/></Layout> : <Navigate to="/login" replace/>}/>
       <Route path="/projects/new" element={loggedInUser ? <Layout><ProjectCreate/></Layout> : <Navigate to="/login" replace/>}/>
       <Route path="/projects/:id" element={loggedInUser ? <Layout><ProjectDetails/></Layout> : <Navigate to="/login" replace/>}/>
