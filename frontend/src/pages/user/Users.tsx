@@ -24,14 +24,14 @@ export default function Users() {
             {error && (<p>Error: {error}</p>)}
             <div>
                 {users?.map(u => (
-                    <div>
+                    <div key={u.id}>
                         <p>{u.id}</p>
                         <p>{u.firstName}</p>
                         <p>{u.lastName}</p>
                         <p>{u.username}</p>
                         <p>{u.email}</p>
                         <p>{u.role}</p>
-                        <p>{u.createdAt.toISOString()}</p>
+                        <p>{new Date(u.createdAt).toLocaleDateString()}</p>
                     </div>
                 ))}
             </div>
