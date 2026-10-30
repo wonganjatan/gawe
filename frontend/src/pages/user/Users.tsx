@@ -5,6 +5,7 @@ import { usersApi } from "../../api/users"
 export default function Users() {
     const [users, setUsers] = useState<User[] | null>(null)
     const [error, setError] = useState<string | null>(null)
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -13,11 +14,18 @@ export default function Users() {
                 setUsers(data)
             } catch (error) {
                 setError("Failed to load user")
+            } finally {
+                setLoading(false)
             }
         }
 
         fetchUsers()
     }, [])
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
     return (
         <div>
             <h1 className="font-bold text-2xl p-4 shadow-md">Tasks</h1>
