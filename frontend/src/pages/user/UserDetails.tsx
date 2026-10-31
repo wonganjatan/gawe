@@ -7,7 +7,6 @@ export default function UserDetails() {
     const { id } = useParams()
     const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
-    // const navigate = useNavigate()
 
     useEffect(() => {
         const fetchUserById = async (id: number) => {
@@ -84,7 +83,7 @@ export default function UserDetails() {
                     </div>
                 </div>
                 <div className="pt-6 flex flex-col items-center justify-between space-y-8">
-                    <Link to="/" className="w-full flex justify-center border border-blue-500 rounded-xl hover:bg-gray-200 px-2 py-1 transition-colors duration-300">Back</Link>
+                    <Link to="/" className="w-full flex justify-center border border-blue-500 rounded-xl hover:bg-gray-200 px-2 py-1 transition-colors duration-300">Back to Home</Link>
                 </div>
             </div>
         </main>

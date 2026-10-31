@@ -4,7 +4,6 @@ import { usersApi } from "../../api/users"
 
 export default function Users() {
     const [users, setUsers] = useState<User[] | null>(null)
-    const [error, setError] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
@@ -13,7 +12,7 @@ export default function Users() {
                 const data = await usersApi.getAllUsers()
                 setUsers(data)
             } catch (error) {
-                setError("Failed to load user")
+                console.error(error)
             } finally {
                 setLoading(false)
             }
@@ -26,15 +25,13 @@ export default function Users() {
         return <p>Loading...</p>
     }
 
+    if (!users) {
+        return <p>Users not found</p>
+    }
+
     return (
         <div>
             <h1 className="font-bold text-2xl p-4 shadow-md">Tasks</h1>
-
-            {error && (
-                <p className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                    Error: {error}
-                </p>
-            )}
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 p-4">
                 {users?.map(u => (
