@@ -31,7 +31,7 @@ export default function Users() {
 
     return (
         <div>
-            <h1 className="font-bold text-2xl p-4 shadow-md">Tasks</h1>
+            <h1 className="font-bold text-2xl p-4 shadow-md">Users</h1>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 p-4">
                 {users?.map(u => (
