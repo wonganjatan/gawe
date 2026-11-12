@@ -31,14 +31,6 @@ export default function Tasks() {
         <div>
             <h1 className="font-bold text-2xl p-4 shadow-md">Tasks</h1>
             <div className="flex items-center justify-between p-4">
-                <form>
-                    <div className="flex items-center justify-center gap-2">
-                        <label htmlFor="name">Search: </label>
-                        <input 
-                            type="text" 
-                            className="border rounded-md"/>
-                    </div>
-                </form>
                 <Link 
                     to="/tasks/new" 
                     className="text-white border border-green-500 bg-green-500 rounded-lg px-2 hover:border-green-600 hover:bg-green-600 transition-colors duration-300">
